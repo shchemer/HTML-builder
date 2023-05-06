@@ -10,7 +10,7 @@ fs.readdir(filePath, {withFileTypes: true}, (error, list) => {
         const fileExt = path.extname(path.join(filePath, item.name)).replace('.', '');
         const fileSize = stats.size / 1000;
         console.log(`${fileName} - ${fileExt} - ${fileSize}kb`);
-      })
+      });
     }
-  })
+  });
 });
