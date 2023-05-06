@@ -2,8 +2,8 @@ const fs = require('fs');
 const readline = require('readline');
 const path = require('path');
 const writeStream = fs.createWriteStream(path.join(__dirname, 'text.txt'));
-const helloPhrase = 'Привет, введи текст';
-const goodByePhrase = 'Пока-пока';
+const helloPhrase = 'Hello, enter text please';
+const goodByePhrase = 'Bye-bye';
 console.log(helloPhrase);
 
 const rl = readline.createInterface({
