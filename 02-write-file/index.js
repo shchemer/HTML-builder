@@ -9,13 +9,13 @@ console.log(helloPhrase);
 const rl = readline.createInterface({
   input: process.stdin,
   output: process.stdout
-})
+});
 
 rl.on('line', data => {
-  if (data === 'exit') { process.exit() };
+  if (data === 'exit') { process.exit(); }
   writeStream.write(`${data} \n`);
 });
 
 process.on('exit', () => {
   console.log(goodByePhrase);
-})
+});
