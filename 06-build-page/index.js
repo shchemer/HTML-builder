@@ -3,7 +3,7 @@ const fsPromises = fs.promises;
 const path = require('path');
 const dist = path.join(__dirname, 'project-dist');
 const mainPage = 'template.html';
-const mainStyle = fs.createWriteStream(path.join(dist, 'style.css'));
+const mainStyle = 'style.css';
 const componentsPath = 'components';
 const stylesPath = 'styles';
 const assetsPath = 'assets';
@@ -42,12 +42,13 @@ function changeTags() {
 }
 
 function configureStyle() {
+  const mainStyleWrite = fs.createWriteStream(path.join(dist, mainStyle));
   fsPromises.readdir(path.join(__dirname, stylesPath), {withFileTypes: true}).then(files => {
     files.forEach(file => {
       if (!file.isDirectory() && path.extname(path.join(__dirname, stylesPath, file.name)).replace('.', '') === 'css') {
         const style = fs.createReadStream(path.join(__dirname, stylesPath, file.name), 'utf-8');
         style.on('data', data => {
-          mainStyle.write(`${data}`);
+          mainStyleWrite.write(`${data}`);
         });
       }
     });
